@@ -2,7 +2,7 @@ package com.space.service;
 
 import com.space.controller.ShipOrder;
 import com.space.exception.BadRequestException;
-import com.space.exception.EntityNotFoundException;
+import com.space.exception.NotFoundException;
 import com.space.model.Ship;
 import com.space.model.ShipType;
 import com.space.repository.ShipRepository;
@@ -108,7 +108,7 @@ public class ShipService {
         Optional<Ship> ship = shipRepository.findById(id);
         if (ship.isPresent())
             return ship.get();
-        else throw new EntityNotFoundException("ID: " + id + " not found in database");
+        else throw new NotFoundException("ID: " + id + " not found in database");
     }
 
     @Transactional
